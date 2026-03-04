@@ -7,3 +7,6 @@ export const UserInfo = {
   Numero: "655960838684",
   Banque: "CREDIT AGRICOL",
 };
+
+export const secret = 446588;
+export const Identifiant = "655960838684";

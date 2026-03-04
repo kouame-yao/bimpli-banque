@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Identifiant, secret } from "../../components/userInfo/UserInfo";
 
 export default function Acceuil() {
   const [btnV, setbtnv] = useState<number[]>([]);
@@ -29,7 +30,6 @@ export default function Acceuil() {
   const valide = () => {
     const code = btnV.join("");
     const num = Number(code);
-    const secret = 446588;
 
     if (num === secret) {
       setloadingb(true);
@@ -47,8 +47,7 @@ export default function Acceuil() {
   };
 
   const identifiant = () => {
-    const secret = "73914826057";
-    if (Input.toString() === secret) {
+    if (Input.toString() === Identifiant) {
       setloading(true);
       setTimeout(() => {
         setloading(false);
