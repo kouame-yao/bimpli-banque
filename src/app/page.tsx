@@ -13,6 +13,7 @@ export default function Acceuil() {
   const [erreurb, setErreub] = useState(false);
   const [entrez, setentrez] = useState(false);
   const [rendu, setRendu] = useState(true);
+  const [showCode, setShowCode] = useState(false);
 
   const router = useRouter();
 
@@ -161,17 +162,28 @@ export default function Acceuil() {
                   <span className="text-red-500">Code inccorect !</span>
                 )}
                 <div className="flex items-center relative">
-                  <div className="border w-full h-12 rounded-xl border-gray-400 outline-none focus:border-green-500 text-center grid justify-center items-center  ">
-                    {btnV.join("")}
+                  <div className="border w-full h-12 rounded-xl border-gray-400 outline-none focus:border-green-500 text-center grid justify-center items-center tracking-widest ">
+                    {showCode ? btnV.join("") : "*".repeat(btnV.length)}
                   </div>
-                  {btnV.length !== 0 && (
-                    <div
-                      onClick={() => setbtnv([])}
-                      className="text-red-500 absolute text-right right-3"
-                    >
-                      X
-                    </div>
-                  )}
+                  <div className="flex gap-2 absolute right-3">
+                    {btnV.length !== 0 && (
+                      <button
+                        onClick={() => setShowCode(!showCode)}
+                        className="text-gray-500 hover:text-gray-700 font-bold"
+                        title={showCode ? "Masquer" : "Afficher"}
+                      >
+                        {showCode ? "👁️" : "👁️‍🗨️"}
+                      </button>
+                    )}
+                    {btnV.length !== 0 && (
+                      <div
+                        onClick={() => setbtnv([])}
+                        className="text-red-500 cursor-pointer"
+                      >
+                        X
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
 
