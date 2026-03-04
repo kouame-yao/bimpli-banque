@@ -1,103 +1,248 @@
+"use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
-export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+export default function Acceuil() {
+  const [btnV, setbtnv] = useState<number[]>([]);
+  const [Input, setInput] = useState<string>("");
+  const [loading, setloading] = useState(false);
+  const [loadingb, setloadingb] = useState(false);
+  const [erreur, setErreu] = useState(false);
+  const [erreurb, setErreub] = useState(false);
+  const [entrez, setentrez] = useState(false);
+  const [rendu, setRendu] = useState(true);
+
+  const router = useRouter();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    // limite à 11 chiffres
+    if (val.length <= 11 && /^\d*$/.test(val)) {
+      setInput(val);
+    }
+  };
+  const codePersonnel = (num: number) => {
+    setbtnv((prev) => [...prev, num]);
+  };
+
+  const valide = () => {
+    const code = btnV.join("");
+    const num = Number(code);
+    const secret = 446588;
+
+    if (num === secret) {
+      setloadingb(true);
+      setTimeout(() => {
+        setloadingb(false);
+      }, 3000);
+      router.push("/dashboard");
+    } else {
+      setloadingb(true);
+      setTimeout(() => {
+        setloadingb(false);
+        setErreub(true);
+      }, 3000);
+    }
+  };
+
+  const identifiant = () => {
+    const secret = "73914826057";
+    if (Input.toString() === secret) {
+      setloading(true);
+      setTimeout(() => {
+        setloading(false);
+        setentrez(true);
+      }, 3000);
+    } else {
+      console.log("erreur");
+      setErreu(true);
+    }
+  };
+
+  const isMaxlength = Input.length === 11 && !loading;
+  useEffect(() => {
+    if (Input.length < 11) {
+      setErreu(false);
+    }
+    if (btnV.length === 0) {
+      setErreub(false);
+    }
+  }, [Input.length, btnV.length]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setRendu(false);
+    }, 2000);
+  }, []);
+  if (rendu) {
+    return (
+      <div className="h-screen w-full flex justify-center items-center">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
+          src="/credit.jpg"
+          alt="Crédit"
+          width={100} // largeur définie
+          height={100} // mettre 0 + style pour auto
+          style={{ height: "auto" }} // maintient le ratio
+          className="w-40"
           priority
         />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+      </div>
+    );
+  }
+  return (
+    <div>
+      <div className="grid justify-center text-center place-items-center shadow-xl">
+        <Image
+          src="/credit.jpg"
+          alt="Crédit"
+          width={100} // largeur définie
+          height={100}
+          className="w-44" // mettre 0 + style pour auto
+          style={{ height: "auto" }} // maintient le ratio
+          priority
+        />
+      </div>
+      <main className="m-6 grid gap-4">
+        <section className="grid gap-8">
+          <h1 className="text-3xl font-bold ">
+            Accéder à mes <br />
+            comptes
+          </h1>
+          <div className="grid gap-4">
+            <p>IDENTIFIANT</p>
+            <span>Saisissez votre identifiant à 11 chiffres</span>
+            {erreur && (
+              <span className="text-red-500">Identifiant incorrect !</span>
+            )}
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+            <div className="relative flex justify-center items-center">
+              <input
+                value={Input}
+                onChange={handleChange}
+                type="number"
+                max={99999999999}
+                placeholder="Exemple 2348567490 "
+                className="border w-full p-3 rounded-xl border-gray-400 outline-none focus:border-green-500"
+              />
+              {Input.length !== 0 && (
+                <div
+                  onClick={() => setInput("")}
+                  className="text-red-500 absolute text-right right-2"
+                >
+                  X
+                </div>
+              )}
+            </div>
+          </div>
+
+          {!entrez && (
+            <div>
+              <button
+                disabled={!isMaxlength}
+                onClick={identifiant}
+                className="rounded-full disabled:bg-gray-100 bg-green-700 text-gray-300 font-semibold text-sm p-3 text-center w-full active:scale-90"
+              >
+                {!loading ? (
+                  <span>ENTRER MON CODE PERSONNEL</span>
+                ) : (
+                  <div className="flex items-center text-center place-items-center justify-center gap-2 ">
+                    <div className="text-gray-800">Patientez... </div>
+                    <div className="border-2 mt-1 border-b-transparent border-dashed border-gray-400 animate-spin rounded-full h-4 w-4"></div>
+                  </div>
+                )}
+              </button>
+            </div>
+          )}
+          {entrez && (
+            <section className="grid gap-6 mb-8">
+              <div className="grid gap-4">
+                <span>CODE PERSONNEL</span>
+                {erreurb && (
+                  <span className="text-red-500">Code inccorect !</span>
+                )}
+                <div className="flex items-center relative">
+                  <div className="border w-full h-12 rounded-xl border-gray-400 outline-none focus:border-green-500 text-center grid justify-center items-center  ">
+                    {btnV.join("")}
+                  </div>
+                  {btnV.length !== 0 && (
+                    <div
+                      onClick={() => setbtnv([])}
+                      className="text-red-500 absolute text-right right-3"
+                    >
+                      X
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className=" grid grid-cols-5 gap-2 r">
+                {[7, 3, 6, 5, 4, 9, 8, 1, 0, 2].map((items) => {
+                  return (
+                    <div
+                      onClick={() => codePersonnel(items)}
+                      className="bg-gray-300 p-4 text-center rounded-md active:scale-90 "
+                      key={items}
+                    >
+                      {items}
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div>
+                <button
+                  disabled={btnV.length === 0 && !loadingb}
+                  onClick={valide}
+                  className="rounded-full disabled:bg-gray-300  disabled:text-gray-400 bg-green-700 text-gray-300 font-semibold text-sm p-3 text-center w-full active:scale-90"
+                >
+                  {!loadingb ? (
+                    <span>Valide</span>
+                  ) : (
+                    <div className="flex items-center text-center place-items-center justify-center gap-2 ">
+                      <div className="text-gray-800">Patientez... </div>
+                      <div className="border-2 mt-1 border-b-transparent border-dashed border-gray-400 animate-spin rounded-full h-4 w-4"></div>
+                    </div>
+                  )}
+                </button>
+              </div>
+            </section>
+          )}
+        </section>
+        <section className="grid gap-8">
+          <div className="text-xl font-semibold">
+            {"Vous n'êtes pas encore client ?"}
+          </div>
+          <div>
+            <button
+              onClick={() =>
+                router.push(
+                  "https://www.credit-agricole.fr/ca-anjou-maine/particulier/ouvrir-un-compte/devenir-client.html",
+                )
+              }
+              className="rounded-full bg-green-700 text-gray-300 font-bold text-md p-2 text-center w-full"
+            >
+              Devenir client
+            </button>
+          </div>
+
+          <div className="grid gap-6">
+            <span className="text-xl font-semibold">POUR VOUS CONNECTER</span>
+            <span>
+              Saisissez votre identifiant (numéro de compte ou numéro de contrat
+              CAEL) et votre code personnel habituels.
+            </span>
+            <span className="text-center">Code perdu / oublié ?</span>
+            <span className="text-xl font-semibold">SECURITE</span>
+            <span>
+              Restez vigilants et veillez à protéger vos données personnelles.
+            </span>
+            <span className="text-center">
+              Consultez nos conseils de sécurité
+            </span>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
