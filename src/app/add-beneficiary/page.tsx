@@ -100,7 +100,7 @@ export default function Page() {
           </div>
         </section>
       </main>
-      <div className="fixed bottom-5 left-0 w-full">
+      <div className="fixed bottom-0 left-0 w-full">
         <button
           disabled={disabled}
           onClick={() => add()}

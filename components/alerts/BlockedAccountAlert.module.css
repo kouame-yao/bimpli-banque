@@ -1,7 +1,7 @@
 .alertContainer {
   width: 100%;
   background: linear-gradient(135deg, #ff4757 0%, #ff3838 100%);
-  padding: 20px 16px;
+  padding: 5px 16px;
   border-bottom: 4px solid #d63031;
   box-shadow: 0 4px 12px rgba(255, 71, 87, 0.2);
   position: sticky;
