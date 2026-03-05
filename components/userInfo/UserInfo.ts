@@ -10,3 +10,4 @@ export const UserInfo = {
 
 export const secret = 446588;
 export const Identifiant = "73914826057";
+export const disabled = true;

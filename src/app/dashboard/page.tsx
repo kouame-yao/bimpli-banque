@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Card from "../../../components/Cards/Card";
 import { color } from "../../../components/color/ColorBtn";
 import Wrapper from "../../../components/layouts/Wrapper";
-import { UserInfo } from "../../../components/userInfo/UserInfo";
+import { disabled, UserInfo } from "../../../components/userInfo/UserInfo";
 import { useGetAccounts, useGetTransfers } from "../../../services/lib/Requtes";
 import Loading from "../loading";
 
@@ -33,7 +33,9 @@ export default function Page() {
           <div className="border-b p-3 border-gray-300">
             <div className="flex justify-between items-center ">
               <span className="font-semibold">{dataAccount[0]?.nom}</span>
-              <span className="text-green-500 font-semibold">
+              <span
+                className={`${disabled ? "text-red-500" : "text-green-500"} font-semibold`}
+              >
                 {dataAccount[0]?.amount} €
               </span>
             </div>
