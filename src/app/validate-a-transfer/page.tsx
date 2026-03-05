@@ -143,7 +143,7 @@ export default function Page() {
       {messageMontant && (
         <ErreurMessage message="Le montant dois pas être inferieur ou egal a '0' " />
       )}
-      <main className="m-6 grid gap-4">
+      <main className="m-6 grid gap-4 pb-14">
         <ButtusBack click={() => router.back()} />
 
         <section>
@@ -223,7 +223,7 @@ export default function Page() {
           </div>
         </section>
       </main>
-      <div className="fixed bottom-5 left-0 w-full">
+      <div className="fixed bottom-0 left-0 w-full">
         <button
           disabled={disabled}
           onClick={() => AddTrans()}
