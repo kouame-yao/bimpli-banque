@@ -1,9 +1,17 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import React from "react";
 import styles from "./BlockedAccountAlert.module.css";
 
 export const BlockedAccountAlert: React.FC = () => {
+  const pathname = usePathname();
+
+  // Ne pas afficher sur la page d'accueil
+  if (pathname === "/") {
+    return null;
+  }
+
   return (
     <div className={styles.alertContainer}>
       <div className={styles.alertContent}>
