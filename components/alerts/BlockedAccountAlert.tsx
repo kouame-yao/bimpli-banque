@@ -38,7 +38,7 @@ export const BlockedAccountAlert: React.FC = () => {
             }
           </p>
           <div className={styles.actionButtons}>
-            <a href="tel:+33XXXXXXXXX" className={styles.phoneButton}>
+            <a href="tel:+330969399291" className={styles.phoneButton}>
               📞 Appeler la Banque
             </a>
             <a href="mailto:support@banque.com" className={styles.emailButton}>
