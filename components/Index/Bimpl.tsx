@@ -1,6 +1,6 @@
 "use client";
-import { AlertTriangle, Eye } from "lucide-react";
-import { EventHandler, SubmitEventHandler, useEffect, useState } from "react";
+import { AlertTriangle, Eye, EyeClosed, UserPlus } from "lucide-react";
+import { useState } from "react";
 import { Identifiant, secret } from "../userInfo/UserInfo";
 import { useRouter } from "next/navigation";
 
@@ -17,6 +17,7 @@ export default function Bimpl() {
 
   const [loadingb, setloadingb] = useState(false);
   const [Erreub, setErreub] = useState(false);
+  const [passwordEye, setPasswordEye] = useState("password");
 
   const handlsubmit = (e: any) => {
     const { name, value } = e.target;
@@ -41,8 +42,8 @@ export default function Bimpl() {
     }
 
     if (
-      parseInt(value.password) === 123 &&
-      value.identifiant.toString() === "123"
+      parseInt(value.password) === secret &&
+      value.identifiant.toString() === Identifiant
     ) {
       setloadingb(true);
       setTimeout(() => {
@@ -109,12 +110,23 @@ export default function Bimpl() {
                       value={value.password}
                       onChange={handlsubmit}
                       className=" outline-none w-full"
-                      type="text"
+                      type={passwordEye}
                       placeholder="Saisissez votre identifiant"
                       name="password"
                       id="password"
                     />
-                    <Eye />
+                    {passwordEye === "text" && (
+                      <Eye
+                        className="cursor-pointer"
+                        onClick={() => setPasswordEye("password")}
+                      />
+                    )}
+                    {passwordEye === "password" && (
+                      <EyeClosed
+                        className="cursor-pointer"
+                        onClick={() => setPasswordEye("text")}
+                      />
+                    )}
                   </div>
                   {Erreur.password && (
                     <span className="text-red-500 font-bold text-xs">
@@ -167,8 +179,10 @@ const Alerte = ({ setErreub }: { setErreub: (value: boolean) => void }) => {
   return (
     <section className="bg-black/40 h-screen fixed w-full mx-auto ">
       <div className="flex justify-center items-center mx-auto h-screen">
-        <div className="bg-white rounded-md text-wrap mx-auto w-md text-center items-center place-items-center p-4  ">
-          <AlertTriangle color="red" size={50} />
+        <div className="bg-white rounded-md text-wrap mx-auto lg:w-lg w-sm text-center items-center place-items-center p-4  ">
+          <div className="grid justify-center items-center text-center">
+            <AlertTriangle className="" color="red" size={50} />
+          </div>
           <div className="grid mt-4">
             <p>
               {" "}

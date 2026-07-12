@@ -35,9 +35,9 @@ function Wrapper({ children }: enfantProps) {
               <Link
                 href={items.href}
                 key={i}
-                className={`flex-col items-center place-items-center font-semibold ${isactive ? `${color.nav}  active:scale-90 z-50 ` : ""} `}
+                className={`grid text-center items-center place-items-center font-semibold ${isactive ? `${color.nav}  active:scale-90 z-50 ` : ""} `}
               >
-                {items.icon} {items.name}{" "}
+                <span>{items.icon}</span> <span>{items.name} </span>
               </Link>
             );
           })}
