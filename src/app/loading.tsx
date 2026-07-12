@@ -36,7 +36,7 @@ export default function Loading() {
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-xl font-semibold text-gray-700"
+          className="text-xl font-semibold text-gray-700 uppercase"
         >
           {UserInfo.Banque}
         </motion.span>

@@ -79,7 +79,7 @@ export default function Acceuil() {
     return (
       <div className="h-screen w-full flex justify-center items-center">
         <Image
-          src="/credit.jpg"
+          src="/credit.png"
           alt="Crédit"
           width={100} // largeur définie
           height={100} // mettre 0 + style pour auto
@@ -92,9 +92,9 @@ export default function Acceuil() {
   }
   return (
     <div>
-      <div className="grid justify-center text-center place-items-center shadow-xl">
+      <div className="grid justify-center text-center place-items-center shadow-xl py-6">
         <Image
-          src="/credit.jpg"
+          src="/credit.png"
           alt="Crédit"
           width={100} // largeur définie
           height={100}
@@ -141,7 +141,7 @@ export default function Acceuil() {
               <button
                 disabled={!isMaxlength}
                 onClick={identifiant}
-                className="rounded-full disabled:bg-gray-100 bg-green-700 text-gray-300 font-semibold text-sm p-3 text-center w-full active:scale-90"
+                className="rounded-full disabled:bg-gray-100 bg-[#A50033] text-gray-300 font-semibold text-sm p-3 text-center w-full active:scale-90"
               >
                 {!loading ? (
                   <span>ENTRER MON CODE PERSONNEL</span>
@@ -205,7 +205,7 @@ export default function Acceuil() {
                 <button
                   disabled={btnV.length === 0 && !loadingb}
                   onClick={valide}
-                  className="rounded-full disabled:bg-gray-300  disabled:text-gray-400 bg-green-700 text-gray-300 font-semibold text-sm p-3 text-center w-full active:scale-90"
+                  className="rounded-full disabled:bg-gray-300  disabled:text-gray-400 bg-[#A50033] text-gray-300 font-semibold text-sm p-3 text-center w-full active:scale-90"
                 >
                   {!loadingb ? (
                     <span>Valide</span>
@@ -231,7 +231,7 @@ export default function Acceuil() {
                   "https://www.credit-agricole.fr/ca-anjou-maine/particulier/ouvrir-un-compte/devenir-client.html",
                 )
               }
-              className="rounded-full bg-green-700 text-gray-300 font-bold text-md p-2 text-center w-full"
+              className="rounded-full bg-[#A50033] text-gray-300 font-bold text-md p-2 text-center w-full"
             >
               Devenir client
             </button>

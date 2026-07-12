@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { JSX, ReactNode } from "react";
 import { color } from "../color/ColorBtn";
+import { BlockedAccountAlert } from "../alerts/BlockedAccountAlert";
 type enfantProps = {
   children : ReactNode
 }
@@ -24,6 +25,7 @@ function Wrapper({ children }: enfantProps) {
   return (
     <div>
       <div className="mx-4 ">
+        <BlockedAccountAlert />
         {children}
       </div>
         <div className={`fixed left-0  bottom-0 w-full shadow-2xl z-50 shadow-gray-500 ${color.themeNave} `}>

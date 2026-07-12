@@ -10,7 +10,7 @@ const router = useRouter()
       <main className="m-6">
         < ButtusBack click={()=>router.back()}/>
       <div className="h-screen grid justify-center items-center">
-<div>Aucune rendez-vous planifier</div>
+<div>Aucun rendez-vous planifier</div>
     </div>
       </main>
     </Wrapper>

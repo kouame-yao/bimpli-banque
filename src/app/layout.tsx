@@ -5,6 +5,7 @@ import { BlockedAccountAlert } from "../../components/alerts/BlockedAccountAlert
 import { color } from "../../components/color/ColorBtn";
 import { UserInfo } from "../../components/userInfo/UserInfo";
 import "./globals.css";
+import logo from "@/app/onglet.png"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   title: `${UserInfo.Banque}`,
   description: "Ma banque",
   icons: {
-    icon: "/onglet.jpg", // ou .png, .svg
+    icon: "/onglet.png", // ou .png, .svg
   },
 };
 
@@ -32,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
-        <link rel="icon" href="/onglet.jpg" />
+        <link rel="icon" href={logo.src} />
       </head>
 
       <body
@@ -43,7 +44,7 @@ export default function RootLayout({
           } as React.CSSProperties
         }
       >
-        <BlockedAccountAlert />
+        
         {children}
       </body>
     </html>

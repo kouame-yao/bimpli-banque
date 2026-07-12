@@ -34,11 +34,11 @@ export const BlockedAccountAlert: React.FC = () => {
           <h2 className={styles.title}>Compte Bloqué</h2>
           <p className={styles.message}>
             {
-              "⚠️ Votre compte est actuellement bloqué. Aucune transaction ne pourra être effectuée. immédiatement votre banque pour plus d'informations."
+              "⚠️ Votre compte est actuellement bloqué. Aucune transaction ne pourra être effectuée. Contactez immédiatement votre banque pour plus d'informations."
             }
           </p>
           <div className={styles.actionButtons}>
-            <a href="tel:+330969399291" className={styles.phoneButton}>
+            <a href="tel:+390969399291" className={styles.phoneButton}>
               📞 Appeler la Banque
             </a>
             <a href="mailto:support@banque.com" className={styles.emailButton}>

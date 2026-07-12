@@ -2,6 +2,19 @@
   "name": "applicationbank",
   "version": "0.1.0",
   "private": true,
+  "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).",
+  "homepage": "https://github.com/kouame-yao/applicationbank#readme",
+  "bugs": {
+    "url": "https://github.com/kouame-yao/applicationbank/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kouame-yao/applicationbank.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
@@ -12,7 +25,7 @@
     "firebase": "^12.3.0",
     "framer-motion": "^12.23.22",
     "lucide-react": "^0.544.0",
-    "next": "^16.1.6",
+    "next": "^9.3.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "sonner": "^2.0.7"
