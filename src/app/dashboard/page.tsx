@@ -39,7 +39,7 @@ export default function Page() {
                 {solde?.nom ?? "Compte courant"}
               </span>
               <span
-                className={`${disabled ? "text-red-500" : "text-green-500"} font-semibold`}
+                className={`${disabled ? "text-green-500" : "text-green-500"} font-semibold`}
               >
                 {solde?.amount.toLocaleString() ?? "0"} €
               </span>
