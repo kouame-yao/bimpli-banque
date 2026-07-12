@@ -67,7 +67,7 @@ export default function Bimpl() {
             <div className="bg-sky-500 text-center text-white mx-auto w-30 rounded-md p-1 mb-5">
               ENTREPRISE
             </div>
-            <section className="bg-white p-4 rounded-md ">
+            <section className="bg-white p-4 rounded-md w-sm mx-auto ">
               <h1 className="text-3xl font-bold mb-4">Bonjour !</h1>
 
               <section className="space-y-4">
