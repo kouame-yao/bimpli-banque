@@ -1,10 +1,8 @@
 @import "tailwindcss";
 
-body{
+body {
   background: var(--theme);
-
 }
 ::-webkit-scrollbar {
   display: none;
 }
-

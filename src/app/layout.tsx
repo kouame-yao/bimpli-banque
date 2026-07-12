@@ -5,7 +5,7 @@ import { BlockedAccountAlert } from "../../components/alerts/BlockedAccountAlert
 import { color } from "../../components/color/ColorBtn";
 import { UserInfo } from "../../components/userInfo/UserInfo";
 import "./globals.css";
-import logo from "@/app/onglet.png"
+import logo from "@/app/bipi.png";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,7 +44,6 @@ export default function RootLayout({
           } as React.CSSProperties
         }
       >
-        
         {children}
       </body>
     </html>

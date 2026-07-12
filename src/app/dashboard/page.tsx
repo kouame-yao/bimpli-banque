@@ -13,7 +13,10 @@ export default function Page() {
   const router = useRouter();
   const { dataTransfers, loadinTrans } = useGetTransfers();
   const { dataAccount, loadingAccount } = useGetAccounts();
-  const solde = dataAccount.find((row)=> row.nom.toLocaleLowerCase() === "Compte courant".toLocaleLowerCase())
+  const solde = dataAccount.find(
+    (row) =>
+      row.nom.toLocaleLowerCase() === "Compte courant".toLocaleLowerCase(),
+  );
   if (loadingAccount && loadinTrans) return <Loading />;
 
   const elementDiv = [
@@ -32,11 +35,13 @@ export default function Page() {
         <section className={`${color.divcard} rounded-md`}>
           <div className="border-b p-3 border-gray-300">
             <div className="flex justify-between items-center ">
-              <span className="font-semibold">{solde?.nom ?? "Compte courant"}</span>
+              <span className="font-semibold">
+                {solde?.nom ?? "Compte courant"}
+              </span>
               <span
                 className={`${disabled ? "text-red-500" : "text-green-500"} font-semibold`}
               >
-                {solde?.amount ?? "0"} €
+                {solde?.amount.toLocaleString() ?? "0"} €
               </span>
             </div>
             <span className="text-sm text-gray-400">{UserInfo.Numero}</span>
